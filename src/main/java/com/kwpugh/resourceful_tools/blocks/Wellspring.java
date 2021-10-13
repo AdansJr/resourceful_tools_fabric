@@ -47,7 +47,7 @@ public class Wellspring extends Block
 	       else if (!player.getInventory().insertStack(itemstack1))
 	       {
 	           player.dropItem(itemstack1, false);
-	            
+			   stack.decrement(1);
 	           return ActionResult.SUCCESS;
 	       }
  		   
@@ -57,7 +57,6 @@ public class Wellspring extends Block
 	   if (stack.getItem() == Items.GLASS_BOTTLE && !player.isCreative())
 	   {
 		   ItemStack itemstack2;
-		   //itemstack1 = new ItemStack(Items.WATER_BUCKET);
 		   itemstack2 = PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.WATER);
 		  
 		   if (stack.isEmpty())
@@ -69,7 +68,7 @@ public class Wellspring extends Block
 	       else if (!player.getInventory().insertStack(itemstack2))
 	       {
 	           player.dropItem(itemstack2, false);
-	            
+			   stack.decrement(1);
 	           return ActionResult.SUCCESS;
 	       }
 		   

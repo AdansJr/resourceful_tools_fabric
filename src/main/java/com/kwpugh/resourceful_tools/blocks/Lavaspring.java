@@ -47,7 +47,7 @@ public class Lavaspring extends Block implements LavaSource
 	       else if (!player.getInventory().insertStack(itemstack1))
 	       {
 	           player.dropItem(itemstack1, false);
-	            
+               stack.decrement(1);
 	           return ActionResult.SUCCESS;
 	       }
  		   
