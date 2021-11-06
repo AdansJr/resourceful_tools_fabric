@@ -1,19 +1,15 @@
 package com.kwpugh.resourceful_tools.mixin;
 
-import com.kwpugh.resourceful_tools.ResourcefulTools;
 import com.kwpugh.resourceful_tools.api.LavaSource;
 import net.minecraft.block.BlockState;
-
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
-
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractFurnaceBlockEntity.class)
@@ -23,15 +19,13 @@ abstract class AbstractFurnaceBlockEntityMixin extends BlockEntity
     @Shadow private int cookTime;
     @Shadow private int cookTimeTotal;
 
-    //static boolean lavaPowersFurnace = ResourcefulTools.CONFIG.GENERAL.lavaPowersFurnace;
-
     public AbstractFurnaceBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state)
     {
         super(type, pos, state);
     }
 
     @Inject(method = "isBurning", at = @At("RETURN"))
-    public void isBurning(CallbackInfoReturnable<Boolean> cir)
+    public void resourcefulIsBurning(CallbackInfoReturnable<Boolean> cir)
     {
         if (world != null && !world.isClient)
     	{
